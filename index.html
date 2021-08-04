@@ -14,9 +14,11 @@
   </head>
   <body>
     <div class="app">
-      <div class="cover"></div>
-
       <main class="content">
+        <div class="cover">
+          <div class="overlay"></div>
+        </div>
+
         <header>
           <button id="shuffle">
             <span class="material-icons">shuffle</span>
@@ -118,18 +120,18 @@
             </div>
           </li>
         </ul>
-
-        <div class="player_bottom">
-          <div class="cover_miniature"></div>
-          <div class="current_song">
-            <h2>Dance Little Liar</h2>
-            <span>Arctic Monkeys</span>
-          </div>
-          <button id="playPause">
-            <span class="material-icons">play_arrow</span>
-          </button>
-        </div>
       </main>
+
+      <footer class="player_bottom">
+        <div class="cover_miniature"></div>
+        <div class="current_song">
+          <h2>Dance Little Liar</h2>
+          <span>Arctic Monkeys</span>
+        </div>
+        <button id="playPause">
+          <span class="material-icons">play_arrow</span>
+        </button>
+      </footer>
     </div>
 
     <script src="index.js" type="module"></script>

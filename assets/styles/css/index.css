@@ -32,7 +32,9 @@ button {
 :root {
   --primary: #590040;
   --primary-light: rgba(89, 0, 64, 0.7);
+  --primary-lightest: rgba(89, 0, 64, 0.4);
   --primary-dark: #431c2f;
+  --primary-rgba: 89, 0, 64;
   --secondary: #a45992;
   --white: #ffffff;
 }
@@ -43,6 +45,46 @@ button {
   height: 100%;
   max-height: 81.2rem;
   position: relative;
+  overflow: hidden;
+  background-color: var(--white);
+}
+
+.app .cover {
+  height: 40rem;
+  position: relative;
+  background-color: var(--secondary);
+}
+
+.app .cover .overlay {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background: linear-gradient(0 -20px rgba(255, 255, 255, 0.2));
+}
+
+.app .content {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.app .content::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+.app .content::-webkit-scrollbar-track {
+  background-color: var(--primary);
+}
+
+.app .content::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.app .content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .app .content header {
@@ -59,8 +101,11 @@ button {
   width: 55px;
   height: 55px;
   border-radius: 50%;
+  margin-top: -3.2rem;
   margin-left: auto;
   margin-right: 10%;
+  position: relative;
+  z-index: 400;
   box-shadow: 0 4px 7px 1px rgba(1, 1, 1, 0.22), 0 -2px 5px 1px rgba(255, 255, 255, 0.1);
   color: var(--white);
   background-color: var(--primary-dark);
@@ -141,16 +186,20 @@ button {
   color: var(--white);
 }
 
+.playlist li:last-child {
+  padding-bottom: 8.5rem;
+}
+
 .player_bottom {
   display: grid;
   grid-template-columns: 55px 1fr 55px;
-  position: absolute;
+  position: sticky;
   bottom: 0;
   left: 0;
   width: 100%;
   padding: 0.6rem;
   z-index: 500;
-  background-color: #fff;
+  background-color: #fb5;
 }
 
 .player_bottom .cover_miniature {
