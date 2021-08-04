@@ -4,12 +4,133 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/styles/css/index.min.css" />
 
     <title>Audio Player JS - APP</title>
   </head>
   <body>
-    <h1>PLAYER</h1>
+    <div class="app">
+      <div class="cover"></div>
+
+      <main class="content">
+        <header>
+          <button id="random">
+            <span class="material-icons">shuffle</span>
+          </button>
+
+          <h1 class="title_album">Humbug</h1>
+          <p class="info_album">2009·9 faixas·35 min</p>
+        </header>
+
+        <ul class="playlist">
+          <li class="song">
+            <span class="order">1</span>
+            <div class="info">
+              <h5>My Propeller</h5>
+              <span>Arctic Monkeys</span>
+            </div>
+            <div class="menu">
+              <button><span class="material-icons">more_vert</span></button>
+            </div>
+          </li>
+          <li class="song">
+            <span class="order">2</span>
+            <div class="info">
+              <h5>Dangeours Animals</h5>
+              <span>Arctic Monkeys</span>
+            </div>
+            <div class="menu">
+              <button><span class="material-icons">more_vert</span></button>
+            </div>
+          </li>
+          <li class="song">
+            <span class="order">3</span>
+            <div class="info">
+              <h5>Secret Door</h5>
+              <span>Arctic Monkeys</span>
+            </div>
+            <div class="menu">
+              <button><span class="material-icons">more_vert</span></button>
+            </div>
+          </li>
+          <li class="song">
+            <span class="order">4</span>
+            <div class="info">
+              <h5>Potion Approaching</h5>
+              <span>Arctic Monkeys</span>
+            </div>
+            <div class="menu">
+              <button><span class="material-icons">more_vert</span></button>
+            </div>
+          </li>
+          <li class="song">
+            <span class="order">5</span>
+            <div class="info">
+              <h5>Fire And The Thud</h5>
+              <span>Arctic Monkeys</span>
+            </div>
+            <div class="menu">
+              <button><span class="material-icons">more_vert</span></button>
+            </div>
+          </li>
+          <li class="song">
+            <span class="order">6</span>
+            <div class="info">
+              <h5>Cornestone</h5>
+              <span>Arctic Monkeys</span>
+            </div>
+            <div class="menu">
+              <button><span class="material-icons">more_vert</span></button>
+            </div>
+          </li>
+          <li class="song">
+            <span class="order">7</span>
+            <div class="info">
+              <h5>Dance Little Liar</h5>
+              <span>Arctic Monkeys</span>
+            </div>
+            <div class="menu">
+              <button><span class="material-icons">more_vert</span></button>
+            </div>
+          </li>
+          <li class="song">
+            <span class="order">8</span>
+            <div class="info">
+              <h5>Pretty Visitors</h5>
+              <span>Arctic Monkeys</span>
+            </div>
+            <div class="menu">
+              <button><span class="material-icons">more_vert</span></button>
+            </div>
+          </li>
+          <li class="song">
+            <span class="order">9</span>
+            <div class="info">
+              <h5>The Jeweller's Hands</h5>
+              <span>Arctic Monkeys</span>
+            </div>
+            <div class="menu">
+              <button><span class="material-icons">more_vert</span></button>
+            </div>
+          </li>
+        </ul>
+
+        <div class="player_bottom">
+          <div class="cover_miniature"></div>
+          <div class="current_song">
+            <h2>Dance Little Liar</h2>
+            <span>Arctic Monkeys</span>
+          </div>
+          <button id="playPause">
+            <span class="material-icons">play_arrow</span>
+          </button>
+        </div>
+      </main>
+    </div>
 
     <script src="index.js" type="module"></script>
   </body>
