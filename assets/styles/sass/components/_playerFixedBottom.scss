@@ -1,0 +1,40 @@
+.player_bottom {
+  display: grid;
+  grid-template-columns: 55px 1fr 55px;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+
+  padding: 0.6rem;
+
+  z-index: 500;
+
+  background-color: #fff;
+
+  .cover_miniature {
+    display: block;
+
+    width: 55px;
+    height: 55px;
+
+    background-color: red;
+  }
+
+  .current_song {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      font-weight: 700;
+    }
+
+    span {
+      font-size: 1.4rem;
+    }
+  }
+}

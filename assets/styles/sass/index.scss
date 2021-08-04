@@ -1,4 +1,6 @@
 @import "./abstracts/resets";
+@import "./abstracts/variables";
 
 @import "./components/app";
 @import "./components/playlist";
+@import "./components/playerFixedBottom";

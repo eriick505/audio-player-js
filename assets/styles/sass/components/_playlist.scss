@@ -1,42 +1,42 @@
 .playlist {
   .song {
     display: grid;
-    grid-template-columns: 40px 1fr 40px;
-
-    background-color: purple;
+    grid-template-columns: 80px 1fr 80px;
 
     padding: 1.2rem 0;
+
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    background-color: var(--primary);
 
     .order {
       display: flex;
       justify-content: center;
       align-items: center;
 
-      width: 40px;
-
-      color: #fff;
-      opacity: 0.85;
+      color: var(--secondary);
 
       font-weight: 300;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
     .info {
+      opacity: 0.9;
+
       h5 {
         margin-bottom: 2px;
 
         font-size: 1.6rem;
         font-weight: 300;
 
-        color: #fff;
-        opacity: 0.85;
+        color: var(--white);
       }
 
       span {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
 
-        color: #fff;
-        opacity: 0.85;
+        color: var(--secondary);
       }
     }
 
@@ -45,27 +45,32 @@
       justify-content: center;
       align-items: center;
 
-      width: 40px;
-
-      color: #fff;
-      opacity: 0.85;
-
       font-weight: 300;
       font-size: 1rem;
 
       button {
         display: flex;
 
-        color: rgba(255, 255, 255, 0.233);
+        color: var(--secondary);
       }
     }
 
-    &.active .order,
-    &.active .info h5,
-    &.active .info span {
-      font-weight: 500;
+    &.active {
+      color: var(--white);
+      background-color: var(--primary-light);
 
-      opacity: 1;
+      & .info {
+        opacity: 1;
+      }
+
+      & .order,
+      & .info h5,
+      & .info span,
+      & .menu button {
+        font-weight: 500;
+
+        color: var(--white);
+      }
     }
   }
 }
