@@ -15,7 +15,7 @@
   <body>
     <div class="app">
       <main class="content">
-        <div class="cover">
+        <div class="album_cover">
           <div class="overlay"></div>
         </div>
 
@@ -124,7 +124,7 @@
         </section>
       </main>
 
-      <footer class="player">
+      <footer class="wrapper_player">
         <div class="player_bottom">
           <div class="cover_miniature"></div>
           <div class="current_song">
@@ -134,6 +134,61 @@
           <button class="togglePlay" id="togglePlay">
             <span class="material-icons">pause</span>
           </button>
+        </div>
+
+        <div class="player">
+          <header>
+            <button id="openLyrics">
+              <span class="material-icons"> chat </span>
+            </button>
+
+            <div class="reproducing">
+              <h2>REPRODUZINDO</h2>
+              <span class="album_name">Humbug</span>
+            </div>
+
+            <button class="band_info">
+              <span class="material-icons"> art_track </span>
+            </button>
+          </header>
+
+          <div class="album_cover">
+            <div class="overlay"></div>
+          </div>
+
+          <div class="controls">
+            <div class="time_control">
+              <span class="initial_duration">00:00</span>
+              <input type="range" id="seekbar" value="0" min="0" max="100" />
+              <span class="total_duration">4:43</span>
+            </div>
+
+            <div class="wrapper_buttons">
+              <button id="repeat">
+                <span class="material-icons"> repeat </span>
+              </button>
+
+              <div class="buttons">
+                <button id="prev">
+                  <span class="material-icons"> chevron_left </span>
+                </button>
+
+                <button id="togglePlay">
+                  <span class="material-icons"> play_arrow </span>
+                </button>
+
+                <button id="next">
+                  <span class="material-icons"> chevron_right </span>
+                </button>
+              </div>
+
+              <button id="random">
+                <span class="material-icons"> shuffle </span>
+              </button>
+            </div>
+          </div>
+
+          <span class="current_song">7/9</span>
         </div>
       </footer>
     </div>
