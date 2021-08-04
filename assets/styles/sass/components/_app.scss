@@ -11,11 +11,19 @@
   background-color: var(--white);
 
   .cover {
-    height: 40rem;
+    height: 41rem;
+    width: 100%;
 
-    position: relative;
+    position: absolute;
 
-    background-color: var(--secondary);
+    left: 0;
+    top: 0;
+
+    background-color: #fb5;
+    background-image: url("../../files/cover-album.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     .overlay {
       display: block;
@@ -30,7 +38,11 @@
 
       z-index: 100;
 
-      background: linear-gradient(0 -20px rgba(255, 255, 255, 0.2));
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(var(--primary-rgba), 1) 98%
+      );
     }
   }
 
@@ -56,8 +68,16 @@
     }
 
     header {
-      text-align: center;
+      position: relative;
+
+      z-index: 500;
+
+      margin-top: 41rem;
       padding: 0.8rem 0;
+
+      text-align: center;
+
+      box-shadow: 0 -16px 22px 1px #590040;
 
       color: var(--white);
       background-color: var(--primary);
@@ -78,12 +98,17 @@
         position: relative;
 
         z-index: 400;
+        transition: var(--transition2s);
 
         box-shadow: 0 4px 7px 1px rgba(1, 1, 1, 0.22),
           0 -2px 5px 1px rgba(255, 255, 255, 0.1);
 
         color: var(--white);
         background-color: var(--primary-dark);
+
+        &:active {
+          background-color: var(--secondary);
+        }
       }
 
       h1 {

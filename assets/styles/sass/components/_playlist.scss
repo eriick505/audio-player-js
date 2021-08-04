@@ -1,4 +1,10 @@
 .playlist {
+  position: relative;
+
+  z-index: 500;
+
+  background-color: var(--white);
+
   .song {
     display: grid;
     grid-template-columns: 80px 1fr 80px;
@@ -55,7 +61,8 @@
       }
     }
 
-    &.active {
+    &.active,
+    &:active {
       color: var(--white);
       background-color: var(--primary-light);
 

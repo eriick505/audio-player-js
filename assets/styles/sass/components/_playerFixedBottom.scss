@@ -2,17 +2,14 @@
   display: grid;
   grid-template-columns: 55px 1fr 55px;
 
-  position: sticky;
-  bottom: 0;
-  left: 0;
-
   width: 100%;
 
-  padding: 0.6rem;
+  padding: 0.8rem;
 
   z-index: 500;
 
-  background-color: #fb5;
+  color: var(--white);
+  background-color: var(--primary);
 
   .cover_miniature {
     display: block;
@@ -20,7 +17,11 @@
     width: 55px;
     height: 55px;
 
-    background-color: red;
+    background-color: var(--secondary);
+    background-image: url("../../files/cover-album.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .current_song {
@@ -35,6 +36,17 @@
 
     span {
       font-size: 1.4rem;
+      color: var(--secondary);
+    }
+  }
+
+  .togglePlay {
+    transition: var(--transition2s);
+
+    color: var(--white);
+
+    &:active {
+      background-color: var(--secondary);
     }
   }
 }

@@ -32,11 +32,11 @@ button {
 :root {
   --primary: #590040;
   --primary-light: rgba(89, 0, 64, 0.7);
-  --primary-lightest: rgba(89, 0, 64, 0.4);
   --primary-dark: #431c2f;
   --primary-rgba: 89, 0, 64;
   --secondary: #a45992;
   --white: #ffffff;
+  --transition2s: all 0.2s ease-in-out;
 }
 
 .app {
@@ -50,9 +50,16 @@ button {
 }
 
 .app .cover {
-  height: 40rem;
-  position: relative;
-  background-color: var(--secondary);
+  height: 41rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #fb5;
+  background-image: url("../../files/cover-album.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .app .cover .overlay {
@@ -63,7 +70,7 @@ button {
   bottom: 0;
   left: 0;
   z-index: 100;
-  background: linear-gradient(0 -20px rgba(255, 255, 255, 0.2));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(var(--primary-rgba), 1) 98%);
 }
 
 .app .content {
@@ -88,8 +95,12 @@ button {
 }
 
 .app .content header {
-  text-align: center;
+  position: relative;
+  z-index: 500;
+  margin-top: 41rem;
   padding: 0.8rem 0;
+  text-align: center;
+  box-shadow: 0 -16px 22px 1px #590040;
   color: var(--white);
   background-color: var(--primary);
 }
@@ -106,9 +117,14 @@ button {
   margin-right: 10%;
   position: relative;
   z-index: 400;
+  transition: var(--transition2s);
   box-shadow: 0 4px 7px 1px rgba(1, 1, 1, 0.22), 0 -2px 5px 1px rgba(255, 255, 255, 0.1);
   color: var(--white);
   background-color: var(--primary-dark);
+}
+
+.app .content header #shuffle:active {
+  background-color: var(--secondary);
 }
 
 .app .content header h1 {
@@ -120,6 +136,12 @@ button {
 .app .content header p {
   font-size: 1.2rem;
   color: var(--secondary);
+}
+
+.playlist {
+  position: relative;
+  z-index: 500;
+  background-color: var(--white);
 }
 
 .playlist .song {
@@ -169,19 +191,22 @@ button {
   color: var(--secondary);
 }
 
-.playlist .song.active {
+.playlist .song.active, .playlist .song:active {
   color: var(--white);
   background-color: var(--primary-light);
 }
 
-.playlist .song.active .info {
+.playlist .song.active .info, .playlist .song:active .info {
   opacity: 1;
 }
 
 .playlist .song.active .order,
 .playlist .song.active .info h5,
 .playlist .song.active .info span,
-.playlist .song.active .menu button {
+.playlist .song.active .menu button, .playlist .song:active .order,
+.playlist .song:active .info h5,
+.playlist .song:active .info span,
+.playlist .song:active .menu button {
   font-weight: 500;
   color: var(--white);
 }
@@ -190,23 +215,34 @@ button {
   padding-bottom: 8.5rem;
 }
 
-.player_bottom {
-  display: grid;
-  grid-template-columns: 55px 1fr 55px;
+.player {
   position: sticky;
   bottom: 0;
   left: 0;
-  width: 100%;
-  padding: 0.6rem;
+  padding-top: 1px;
   z-index: 500;
-  background-color: #fb5;
+  background: linear-gradient(90deg, #55003f 2%, #ffffff4b 14%, #ffffff4b 86%, #55003f 98%);
+}
+
+.player_bottom {
+  display: grid;
+  grid-template-columns: 55px 1fr 55px;
+  width: 100%;
+  padding: 0.8rem;
+  z-index: 500;
+  color: var(--white);
+  background-color: var(--primary);
 }
 
 .player_bottom .cover_miniature {
   display: block;
   width: 55px;
   height: 55px;
-  background-color: red;
+  background-color: var(--secondary);
+  background-image: url("../../files/cover-album.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .player_bottom .current_song {
@@ -222,4 +258,14 @@ button {
 
 .player_bottom .current_song span {
   font-size: 1.4rem;
+  color: var(--secondary);
+}
+
+.player_bottom .togglePlay {
+  transition: var(--transition2s);
+  color: var(--white);
+}
+
+.player_bottom .togglePlay:active {
+  background-color: var(--secondary);
 }

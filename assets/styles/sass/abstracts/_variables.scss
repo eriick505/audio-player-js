@@ -1,11 +1,12 @@
 :root {
   --primary: #590040;
   --primary-light: rgba(89, 0, 64, 0.7);
-  --primary-lightest: rgba(89, 0, 64, 0.4);
   --primary-dark: #431c2f;
   --primary-rgba: 89, 0, 64;
 
   --secondary: #a45992;
 
   --white: #ffffff;
+
+  --transition2s: all 0.2s ease-in-out;
 }
