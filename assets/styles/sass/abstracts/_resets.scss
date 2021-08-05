@@ -29,9 +29,19 @@ ul {
 }
 
 button {
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+
+  transition: var(--transition2s);
+
+  color: var(--secondary);
   background-color: transparent;
 
-  cursor: pointer;
+  &:active {
+    color: var(--white);
+    background-color: var(--secondary);
+  }
 }
 
 img {
