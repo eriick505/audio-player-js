@@ -4,23 +4,19 @@
   bottom: 0;
   left: 0;
 
+  height: 100%;
+  max-height: 7.1rem;
   padding-top: 1px;
 
   z-index: 500;
-  transition: var(--transition2s);
+  transition: var(--transition5s);
 
-  background: linear-gradient(
-    90deg,
-    #55003f 2%,
-    #ffffff4b 14%,
-    #ffffff4b 86%,
-    #55003f 98%
-  );
+  background: var(--primary);
 
   &.active {
-    padding-top: 0;
     height: 100%;
-    background: var(--primary);
+    max-height: 100%;
+    padding-top: 0;
 
     .player_bottom {
       display: none;
