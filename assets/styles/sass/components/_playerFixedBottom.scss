@@ -3,13 +3,37 @@
   grid-template-columns: 55px 1fr 55px;
 
   width: 100%;
-
   padding: 0.8rem;
 
+  position: relative;
+
+  cursor: pointer;
   z-index: 500;
 
   color: var(--white);
   background-color: var(--primary);
+
+  &::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: -2px;
+
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(
+      90deg,
+      #55003f 2%,
+      #ffffff4b 14%,
+      #ffffff4b 86%,
+      #55003f 98%
+    );
+  }
 
   .cover_miniature {
     display: block;
