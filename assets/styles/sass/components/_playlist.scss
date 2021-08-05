@@ -1,0 +1,85 @@
+.playlist {
+  position: relative;
+
+  z-index: 500;
+
+  background-color: var(--white);
+
+  .song {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+
+    padding: 1.2rem 0;
+
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    background-color: var(--primary);
+
+    .order {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: var(--secondary);
+
+      font-weight: 300;
+      font-size: 1.2rem;
+    }
+
+    .info {
+      opacity: 0.9;
+
+      h5 {
+        margin-bottom: 2px;
+
+        font-size: 1.6rem;
+        font-weight: 300;
+
+        color: var(--white);
+      }
+
+      span {
+        font-size: 1.3rem;
+
+        color: var(--secondary);
+      }
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-weight: 300;
+      font-size: 1rem;
+
+      button {
+        display: flex;
+      }
+    }
+
+    &.active,
+    &:active {
+      color: var(--white);
+      background-color: var(--primary-light);
+
+      & .info {
+        opacity: 1;
+      }
+
+      & .order,
+      & .info h5,
+      & .info span,
+      & .menu button {
+        font-weight: 500;
+
+        color: var(--white);
+      }
+    }
+  }
+
+  li:last-child {
+    padding-bottom: 8.5rem;
+  }
+}

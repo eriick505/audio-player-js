@@ -1,0 +1,52 @@
+.player_bottom {
+  display: grid;
+  grid-template-columns: 55px 1fr 55px;
+
+  width: 100%;
+
+  padding: 0.8rem;
+
+  z-index: 500;
+
+  color: var(--white);
+  background-color: var(--primary);
+
+  .cover_miniature {
+    display: block;
+
+    width: 55px;
+    height: 55px;
+
+    background-color: var(--secondary);
+    background-image: url("../../files/cover-album.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .current_song {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      font-weight: 700;
+    }
+
+    span {
+      font-size: 1.4rem;
+      color: var(--secondary);
+    }
+  }
+
+  .togglePlay {
+    transition: var(--transition2s);
+
+    color: var(--white);
+
+    &:active {
+      background-color: var(--secondary);
+    }
+  }
+}
