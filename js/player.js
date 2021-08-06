@@ -1,4 +1,5 @@
 import mockPlaylist from "./data.js";
+import { convertSecondsToMinutes } from "./utils.js";
 
 const Player = {
   playlistUL: document.querySelector(".playlist"),
@@ -7,13 +8,19 @@ const Player = {
 
   titleEl: document.querySelector("#title"),
   bandEl: document.querySelector("#band"),
+  titleBottomEl: document.querySelector("#titleBottom"),
+  bandBottomEl: document.querySelector("#bandBottom"),
+
+  currentDurationEl: document.querySelector(".initial_duration"),
+  seekbarEl: document.querySelector("#seekbar"),
+  totalDurationEl: document.querySelector(".total_duration"),
+
   nextBTN: document.querySelector("#next"),
 
   isPlaying: false,
   data: mockPlaylist,
 
   currentPlaying: 0,
-  // currentSong: {},
 
   createAudio(src) {
     this.audio = new Audio(src);
@@ -43,6 +50,8 @@ const Player = {
 
     this.titleEl.textContent = title;
     this.bandEl.textContent = band;
+    this.titleBottomEl.textContent = title;
+    this.bandBottomEl.textContent = band;
   },
 
   play() {
@@ -88,15 +97,31 @@ const Player = {
 
     this.createAudio(this.data[this.currentPlaying].src);
     this.initPlayList();
-    this.updatePlayer();
-    this.play();
-    this.togglePlayPauseIcons();
+
+    this.onAudioLoadedData(() => {
+      this.updatePlayer();
+      this.play();
+      this.updateTime();
+      this.togglePlayPauseIcons();
+    });
   },
 
   reset() {
     this.audio.currentTime = 0;
     this.audio.src = "";
     this.pause();
+  },
+
+  updateTime() {
+    this.totalDurationEl.textContent = convertSecondsToMinutes(
+      this.audio.duration
+    );
+
+    this.audio.addEventListener("timeupdate", () => {
+      this.currentDurationEl.textContent = convertSecondsToMinutes(
+        this.audio.currentTime
+      );
+    });
   },
 
   activeActions() {
@@ -106,9 +131,11 @@ const Player = {
 
     this.nextBTN.addEventListener("click", () => this.next());
 
-    this.audio.onended = () => {
-      this.next();
-    };
+    this.updateTime();
+  },
+
+  onAudioLoadedData(callback) {
+    this.audio.addEventListener("loadeddata", () => callback());
   },
 
   start() {
@@ -116,7 +143,7 @@ const Player = {
     this.initPlayList();
     this.updatePlayer();
 
-    this.audio.onloadeddata = () => this.activeActions();
+    this.onAudioLoadedData(() => this.activeActions());
   },
 };
 
