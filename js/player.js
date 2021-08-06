@@ -85,6 +85,14 @@ const Player = {
     }
   },
 
+  handlePlayPauseButtons() {
+    const addEventOnClick = (btn) => {
+      btn.onclick = () => this.togglePlayPause();
+    };
+
+    this.togglePlayBTN.forEach(addEventOnClick);
+  },
+
   next() {
     this.reset();
 
@@ -95,43 +103,41 @@ const Player = {
       return;
     }
 
-    this.createAudio(this.data[this.currentPlaying].src);
-    this.initPlayList();
-
-    this.onAudioLoadedData(() => {
-      this.updatePlayer();
-      this.play();
-      this.updateTime();
-      this.togglePlayPauseIcons();
-    });
+    this.start();
+    this.play();
+    this.togglePlayPauseIcons();
   },
 
   reset() {
+    this.pause();
     this.audio.currentTime = 0;
     this.audio.src = "";
-    this.pause();
   },
 
   updateTime() {
-    this.totalDurationEl.textContent = convertSecondsToMinutes(
-      this.audio.duration
+    this.currentDurationEl.textContent = convertSecondsToMinutes(
+      this.audio.currentTime
     );
 
-    this.audio.addEventListener("timeupdate", () => {
-      this.currentDurationEl.textContent = convertSecondsToMinutes(
-        this.audio.currentTime
-      );
-    });
+    this.seekbarEl.value = this.audio.currentTime;
+  },
+
+  setSeekbar(value) {
+    this.audio.currentTime = value;
   },
 
   activeActions() {
-    this.togglePlayBTN.forEach((btn) => {
-      btn.addEventListener("click", () => this.togglePlayPause());
-    });
+    this.handlePlayPauseButtons();
 
-    this.nextBTN.addEventListener("click", () => this.next());
+    this.nextBTN.onclick = () => this.next();
+    this.audio.ontimeupdate = () => this.updateTime();
 
-    this.updateTime();
+    this.seekbarEl.max = this.audio.duration;
+    this.seekbarEl.onchange = () => this.setSeekbar(this.seekbarEl.value);
+
+    this.totalDurationEl.innerText = convertSecondsToMinutes(
+      this.audio.duration
+    );
   },
 
   onAudioLoadedData(callback) {
