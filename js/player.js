@@ -4,10 +4,13 @@ const Player = {
   playlistUL: document.querySelector(".playlist"),
   togglePlayBTN: document.querySelectorAll(".togglePlay"),
   togglePlaySPAN: document.querySelectorAll(".togglePlay span"),
+  nextBTN: document.querySelector("#next"),
 
   isPlaying: false,
-  currentSong: 0,
   data: mockPlaylist,
+
+  currentPlaying: 0,
+  currentSong: {},
 
   createAudio(src) {
     this.audio = new Audio(src);
@@ -15,7 +18,7 @@ const Player = {
 
   initPlayList() {
     const createTemplateLI = (item, index) => `
-    <li class="song ${this.currentSong === index ? "active" : ""}">
+    <li class="song ${this.currentPlaying === index ? "active" : ""}">
       <span class="order">${index + 1}</span>
       <div class="info">
         <h5>${item.title}</h5>
@@ -63,14 +66,38 @@ const Player = {
     }
   },
 
+  next() {
+    this.reset();
+
+    this.currentPlaying++;
+
+    if (this.currentPlaying === this.data.length) {
+      return;
+    }
+
+    this.createAudio(this.data[this.currentPlaying].src);
+    this.initPlayList();
+    this.play();
+  },
+
+  reset() {
+    this.audio.currentTime = 0;
+    this.audio.src = "";
+    this.pause();
+  },
+
   activeActions() {
     this.togglePlayBTN.forEach((btn) => {
       btn.addEventListener("click", () => this.togglePlayPause());
     });
+
+    this.nextBTN.onclick = () => {
+      this.next();
+    };
   },
 
   start() {
-    this.createAudio(this.data[this.currentSong].src);
+    this.createAudio(this.data[this.currentPlaying].src);
     this.initPlayList();
 
     this.audio.onloadeddata = () => this.activeActions();
