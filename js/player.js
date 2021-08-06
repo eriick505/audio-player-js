@@ -4,13 +4,16 @@ const Player = {
   playlistUL: document.querySelector(".playlist"),
   togglePlayBTN: document.querySelectorAll(".togglePlay"),
   togglePlaySPAN: document.querySelectorAll(".togglePlay span"),
+
+  titleEl: document.querySelector("#title"),
+  bandEl: document.querySelector("#band"),
   nextBTN: document.querySelector("#next"),
 
   isPlaying: false,
   data: mockPlaylist,
 
   currentPlaying: 0,
-  currentSong: {},
+  // currentSong: {},
 
   createAudio(src) {
     this.audio = new Audio(src);
@@ -33,6 +36,13 @@ const Player = {
     const li = this.data.map(createTemplateLI).join("");
 
     this.playlistUL.innerHTML = li;
+  },
+
+  updatePlayer() {
+    const { title, band } = this.data[this.currentPlaying];
+
+    this.titleEl.textContent = title;
+    this.bandEl.textContent = band;
   },
 
   play() {
@@ -71,13 +81,16 @@ const Player = {
 
     this.currentPlaying++;
 
-    if (this.currentPlaying === this.data.length) {
+    if (this.currentPlaying >= this.data.length) {
+      console.log("aqui");
       return;
     }
 
     this.createAudio(this.data[this.currentPlaying].src);
     this.initPlayList();
+    this.updatePlayer();
     this.play();
+    this.togglePlayPauseIcons();
   },
 
   reset() {
@@ -91,7 +104,9 @@ const Player = {
       btn.addEventListener("click", () => this.togglePlayPause());
     });
 
-    this.nextBTN.onclick = () => {
+    this.nextBTN.addEventListener("click", () => this.next());
+
+    this.audio.onended = () => {
       this.next();
     };
   },
@@ -99,6 +114,7 @@ const Player = {
   start() {
     this.createAudio(this.data[this.currentPlaying].src);
     this.initPlayList();
+    this.updatePlayer();
 
     this.audio.onloadeddata = () => this.activeActions();
   },
