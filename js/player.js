@@ -128,6 +128,8 @@ const Player = {
   },
 
   updateTime() {
+    this.changeSeekbarStyle();
+
     this.currentDurationEl.textContent = convertSecondsToMinutes(
       this.audio.currentTime
     );
@@ -139,6 +141,15 @@ const Player = {
     this.audio.currentTime = value;
   },
 
+  changeSeekbarStyle() {
+    const min = this.seekbarEl.min;
+    const max = this.seekbarEl.max;
+    const value = this.seekbarEl.value;
+
+    this.seekbarEl.style.backgroundSize =
+      ((value - min) * 100) / (max - min) + "% 100%";
+  },
+
   activeActions() {
     this.handlePlayPauseButtons();
 
@@ -147,7 +158,10 @@ const Player = {
     this.audio.ontimeupdate = () => this.updateTime();
 
     this.seekbarEl.max = this.audio.duration;
-    this.seekbarEl.onchange = () => this.setSeekbar(this.seekbarEl.value);
+    this.seekbarEl.oninput = () => {
+      this.setSeekbar(this.seekbarEl.value);
+      this.changeSeekbarStyle();
+    };
 
     this.totalDurationEl.innerText = convertSecondsToMinutes(
       this.audio.duration
