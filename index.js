@@ -1,3 +1,5 @@
+import Player from "./js/player.js";
+
 const playerWrapperEl = document.querySelector(".wrapper_player");
 const playerBottomEl = document.querySelector(".player_bottom");
 const playerCloseEl = document.querySelector(".close");
@@ -17,3 +19,6 @@ playerBottomEl.addEventListener("click", addActiveClassToPlayerWrapper);
 playerCloseEl.addEventListener("click", () =>
   playerWrapperEl.classList.remove(activeClass)
 );
+
+console.log(Player);
+Player.start();

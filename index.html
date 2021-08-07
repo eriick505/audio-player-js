@@ -29,98 +29,7 @@
             <p class="info_album">2009 · 9 faixas · 35 min</p>
           </header>
 
-          <ul class="playlist">
-            <li class="song">
-              <span class="order">1</span>
-              <div class="info">
-                <h5>My Propeller</h5>
-                <span>Arctic Monkeys</span>
-              </div>
-              <div class="menu">
-                <button><span class="material-icons">more_vert</span></button>
-              </div>
-            </li>
-            <li class="song">
-              <span class="order">2</span>
-              <div class="info">
-                <h5>Dangeours Animals</h5>
-                <span>Arctic Monkeys</span>
-              </div>
-              <div class="menu">
-                <button><span class="material-icons">more_vert</span></button>
-              </div>
-            </li>
-            <li class="song">
-              <span class="order">3</span>
-              <div class="info">
-                <h5>Secret Door</h5>
-                <span>Arctic Monkeys</span>
-              </div>
-              <div class="menu">
-                <button><span class="material-icons">more_vert</span></button>
-              </div>
-            </li>
-            <li class="song">
-              <span class="order">4</span>
-              <div class="info">
-                <h5>Potion Approaching</h5>
-                <span>Arctic Monkeys</span>
-              </div>
-              <div class="menu">
-                <button><span class="material-icons">more_vert</span></button>
-              </div>
-            </li>
-            <li class="song">
-              <span class="order">5</span>
-              <div class="info">
-                <h5>Fire And The Thud</h5>
-                <span>Arctic Monkeys</span>
-              </div>
-              <div class="menu">
-                <button><span class="material-icons">more_vert</span></button>
-              </div>
-            </li>
-            <li class="song">
-              <span class="order">6</span>
-              <div class="info">
-                <h5>Cornestone</h5>
-                <span>Arctic Monkeys</span>
-              </div>
-              <div class="menu">
-                <button><span class="material-icons">more_vert</span></button>
-              </div>
-            </li>
-            <li class="song active">
-              <span class="order">7</span>
-              <div class="info">
-                <h5>Dance Little Liar</h5>
-                <span>Arctic Monkeys</span>
-              </div>
-              <div class="menu">
-                <button><span class="material-icons">more_vert</span></button>
-              </div>
-            </li>
-            <li class="song">
-              <span class="order">8</span>
-              <div class="info">
-                <h5>Pretty Visitors</h5>
-                <span>Arctic Monkeys</span>
-              </div>
-              <div class="menu">
-                <button><span class="material-icons">more_vert</span></button>
-              </div>
-            </li>
-            <li class="song">
-              <span class="order">9</span>
-              <div class="info">
-                <h5>The Jeweller's Hands</h5>
-                <span>Arctic Monkeys</span>
-              </div>
-              <div class="menu">
-                <button><span class="material-icons">more_vert</span></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="playlist"></ul>
         </section>
       </main>
 
@@ -128,11 +37,11 @@
         <div class="player_bottom">
           <div class="cover_miniature"></div>
           <div class="current_song">
-            <h2>Dance Little Liar</h2>
-            <span>Arctic Monkeys</span>
+            <h2 id="titleBottom">Dance Little Liar</h2>
+            <span id="bandBottom">Arctic Monkeys</span>
           </div>
-          <button class="togglePlay" id="togglePlay">
-            <span class="material-icons">pause</span>
+          <button class="togglePlay">
+            <span class="material-icons">play_arrow</span>
           </button>
         </div>
 
@@ -157,15 +66,15 @@
           </div>
 
           <div class="info">
-            <h2>Dance Little Liar</h2>
-            <span>Arctic Monkeys</span>
+            <h2 id="title">Dance Little Liar</h2>
+            <span id="band">Arctic Monkeys</span>
           </div>
 
           <div class="controls">
             <div class="time_control">
               <span class="initial_duration">00:00</span>
               <input type="range" id="seekbar" value="0" min="0" max="100" />
-              <span class="total_duration">4:43</span>
+              <span class="total_duration">00:00</span>
             </div>
 
             <div class="wrapper_buttons">
@@ -178,7 +87,7 @@
                   <span class="material-icons"> chevron_left </span>
                 </button>
 
-                <button id="togglePlay">
+                <button class="togglePlay" id="togglePlay">
                   <span class="material-icons"> play_arrow </span>
                 </button>
 
