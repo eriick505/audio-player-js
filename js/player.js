@@ -15,6 +15,7 @@ const Player = {
   seekbarEl: document.querySelector("#seekbar"),
   totalDurationEl: document.querySelector(".total_duration"),
 
+  prevBTN: document.querySelector("#prev"),
   nextBTN: document.querySelector("#next"),
 
   isPlaying: false,
@@ -93,14 +94,26 @@ const Player = {
     this.togglePlayBTN.forEach(addEventOnClick);
   },
 
+  prev() {
+    if (this.currentPlaying === 0) {
+      return;
+    }
+    this.reset();
+
+    this.currentPlaying--;
+
+    this.start();
+    this.play();
+    this.togglePlayPauseIcons();
+  },
+
   next() {
     this.reset();
 
     this.currentPlaying++;
 
-    if (this.currentPlaying >= this.data.length) {
-      console.log("aqui");
-      return;
+    if (this.currentPlaying === this.data.length) {
+      this.currentPlaying = 0;
     }
 
     this.start();
@@ -129,6 +142,7 @@ const Player = {
   activeActions() {
     this.handlePlayPauseButtons();
 
+    this.prevBTN.onclick = () => this.prev();
     this.nextBTN.onclick = () => this.next();
     this.audio.ontimeupdate = () => this.updateTime();
 
