@@ -28,12 +28,15 @@ const Player = {
   },
 
   initPlayList() {
-    const createTemplateLI = (item, index) => `
-    <li class="song ${this.currentPlaying === index ? "active" : ""}">
+    const createTemplateLI = ({ title, band }, index) => `
+    <li 
+      data-song="${index}"
+      class="song ${this.currentPlaying === index ? "active" : ""}"
+    >
       <span class="order">${index + 1}</span>
       <div class="info">
-        <h5>${item.title}</h5>
-        <span>${item.band}</span>
+        <h5>${title}</h5>
+        <span>${band}</span>
       </div>
       <div class="menu">
         <button><span class="material-icons">more_vert</span></button>
@@ -124,7 +127,6 @@ const Player = {
   reset() {
     this.pause();
     this.audio.currentTime = 0;
-    this.audio.src = "";
   },
 
   updateTime() {
@@ -150,11 +152,32 @@ const Player = {
       ((value - min) * 100) / (max - min) + "% 100%";
   },
 
+  changeSongOnClick(event) {
+    const target = event.target;
+    const targetSong = Number(target.dataset?.song);
+    const isButton = target.tagName === "BUTTON";
+    const parentIsMenu = target.parentNode?.classList.contains("menu");
+
+    if (isButton && parentIsMenu) {
+      return;
+    }
+
+    this.reset();
+    this.currentPlaying = targetSong;
+    this.start();
+
+    this.onAudioLoadedData(() => {
+      this.play();
+      this.togglePlayPauseIcons();
+    });
+  },
+
   activeActions() {
     this.handlePlayPauseButtons();
 
     this.prevBTN.onclick = () => this.prev();
     this.nextBTN.onclick = () => this.next();
+
     this.audio.ontimeupdate = () => this.updateTime();
 
     this.seekbarEl.max = this.audio.duration;
@@ -166,6 +189,8 @@ const Player = {
     this.totalDurationEl.innerText = convertSecondsToMinutes(
       this.audio.duration
     );
+
+    this.playlistUL.onclick = (e) => this.changeSongOnClick(e);
   },
 
   onAudioLoadedData(callback) {
