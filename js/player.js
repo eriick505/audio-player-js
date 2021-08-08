@@ -29,7 +29,7 @@ const Player = {
 
   initPlayList() {
     const createTemplateLI = ({ title, band }, index) => `
-    <li 
+    <li
       data-song="${index}"
       class="song ${this.currentPlaying === index ? "active" : ""}"
     >
@@ -154,9 +154,9 @@ const Player = {
 
   changeSongOnClick(event) {
     const target = event.target;
-    const targetSong = Number(target.dataset?.song);
+    const targetSong = Number(target.dataset.song);
     const isButton = target.tagName === "BUTTON";
-    const parentIsMenu = target.parentNode?.classList.contains("menu");
+    const parentIsMenu = target.parentNode.classList.contains("menu");
 
     if (isButton && parentIsMenu) {
       return;
@@ -201,7 +201,6 @@ const Player = {
     this.createAudio(this.data[this.currentPlaying].src);
     this.initPlayList();
     this.updatePlayer();
-
     this.onAudioLoadedData(() => this.activeActions());
   },
 };
