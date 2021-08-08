@@ -174,13 +174,15 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--secondary);
-  font-weight: 300;
   font-size: 1.2rem;
+  font-weight: 300;
+  pointer-events: none;
+  color: var(--secondary);
 }
 
 .playlist .song .info {
   opacity: 0.9;
+  pointer-events: none;
 }
 
 .playlist .song .info h5 {
