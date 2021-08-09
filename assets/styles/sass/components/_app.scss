@@ -87,6 +87,7 @@
         color: var(--white);
         background-color: var(--primary-dark);
 
+        &.active,
         &:active {
           background-color: var(--secondary);
         }

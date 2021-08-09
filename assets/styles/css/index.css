@@ -139,7 +139,7 @@ img {
   background-color: var(--primary-dark);
 }
 
-.app .wrapper header #shuffle:active {
+.app .wrapper header #shuffle.active, .app .wrapper header #shuffle:active {
   background-color: var(--secondary);
 }
 

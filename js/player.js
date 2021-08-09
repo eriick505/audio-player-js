@@ -5,6 +5,7 @@ const Player = {
   playlistUL: document.querySelector(".playlist"),
   togglePlayBTN: document.querySelectorAll(".togglePlay"),
   togglePlaySPAN: document.querySelectorAll(".togglePlay span"),
+  shuffleBTN: document.querySelector("#shuffle"),
 
   titleEl: document.querySelector("#title"),
   bandEl: document.querySelector("#band"),
@@ -19,6 +20,7 @@ const Player = {
   nextBTN: document.querySelector("#next"),
 
   isPlaying: false,
+  isShuffling: false,
   data: mockPlaylist,
 
   currentPlaying: 0,
@@ -113,7 +115,11 @@ const Player = {
   next() {
     this.reset();
 
-    this.currentPlaying++;
+    if (this.isShuffling) {
+      this.currentPlaying = Math.floor(Math.random() * this.data.length);
+    } else {
+      this.currentPlaying++;
+    }
 
     if (this.currentPlaying === this.data.length) {
       this.currentPlaying = 0;
@@ -127,6 +133,25 @@ const Player = {
   reset() {
     this.pause();
     this.audio.currentTime = 0;
+  },
+
+  setShuffle() {
+    this.isShuffling = !this.isShuffling;
+    this.shuffleBTN.classList.toggle("active");
+  },
+
+  onShuffle() {
+    this.setShuffle();
+
+    if (this.isShuffling && !this.isPlaying) {
+      this.currentPlaying = Math.floor(Math.random() * this.data.length);
+
+      console.log(this.currentPlaying, "onshuffle");
+
+      this.start();
+      this.play();
+      this.togglePlayPauseIcons();
+    }
   },
 
   updateTime() {
@@ -191,6 +216,7 @@ const Player = {
     );
 
     this.playlistUL.onclick = (e) => this.changeSongOnClick(e);
+    this.shuffleBTN.onclick = () => this.onShuffle();
   },
 
   onAudioLoadedData(callback) {
