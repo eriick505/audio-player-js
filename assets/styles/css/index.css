@@ -408,7 +408,7 @@ img {
   color: var(--white);
 }
 
-.wrapper_player .player .current_song {
+.wrapper_player .player .step_current_song {
   display: block;
   margin: 1.6rem 0;
   text-align: center;
