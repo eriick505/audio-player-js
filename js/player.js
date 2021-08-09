@@ -15,6 +15,7 @@ const Player = {
   currentDurationEl: document.querySelector(".initial_duration"),
   seekbarEl: document.querySelector("#seekbar"),
   totalDurationEl: document.querySelector(".total_duration"),
+  currentSongEl: document.querySelector(".step_current_song"),
 
   prevBTN: document.querySelector("#prev"),
   nextBTN: document.querySelector("#next"),
@@ -197,6 +198,12 @@ const Player = {
     });
   },
 
+  showCurrentSong() {
+    this.currentSongEl.innerHTML = `${this.currentPlaying + 1}/${
+      this.data.length
+    }`;
+  },
+
   activeActions() {
     this.handlePlayPauseButtons();
 
@@ -214,6 +221,8 @@ const Player = {
     this.totalDurationEl.innerText = convertSecondsToMinutes(
       this.audio.duration
     );
+
+    this.showCurrentSong();
 
     this.playlistUL.onclick = (e) => this.changeSongOnClick(e);
     this.shuffleBTN.onclick = () => this.onShuffle();
