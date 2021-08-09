@@ -1,4 +1,5 @@
 import mockPlaylist from "./data.js";
+import fetchLyric from "./fetchLyric.js";
 import { convertSecondsToMinutes } from "./utils.js";
 
 const Player = {
@@ -6,11 +7,13 @@ const Player = {
   togglePlayBTN: document.querySelectorAll(".togglePlay"),
   togglePlaySPAN: document.querySelectorAll(".togglePlay span"),
   shuffleBTN: document.querySelector("#shuffle"),
+  toggleLyricsBTN: document.querySelector("#openLyrics"),
 
   titleEl: document.querySelector("#title"),
   bandEl: document.querySelector("#band"),
   titleBottomEl: document.querySelector("#titleBottom"),
   bandBottomEl: document.querySelector("#bandBottom"),
+  lyricsEl: document.querySelector(".lyrics"),
 
   currentDurationEl: document.querySelector(".initial_duration"),
   seekbarEl: document.querySelector("#seekbar"),
@@ -22,8 +25,9 @@ const Player = {
 
   isPlaying: false,
   isShuffling: false,
-  data: mockPlaylist,
+  lyric: null,
 
+  data: mockPlaylist,
   currentPlaying: 0,
 
   createAudio(src) {
@@ -50,13 +54,15 @@ const Player = {
     this.playlistUL.innerHTML = this.data.map(createTemplateLI).join("");
   },
 
-  updatePlayer() {
+  async updatePlayer() {
     const { title, band } = this.data[this.currentPlaying];
 
     this.titleEl.textContent = title;
     this.bandEl.textContent = band;
     this.titleBottomEl.textContent = title;
     this.bandBottomEl.textContent = band;
+
+    this.getLyric();
   },
 
   play() {
@@ -207,6 +213,23 @@ const Player = {
     }`;
   },
 
+  async getLyric() {
+    const { title, band } = this.data[this.currentPlaying];
+    const { json, error } = await fetchLyric(title, band);
+
+    if (json) {
+      this.lyric = json.mus[0].text.replace(/\n/g, "<br />");
+    } else {
+      this.lyric = error;
+    }
+
+    this.lyricsEl.innerHTML = this.lyric;
+  },
+
+  toggleLyrics() {
+    this.lyricsEl.classList.toggle("active");
+  },
+
   activeActions() {
     this.handlePlayPauseButtons();
 
@@ -217,6 +240,7 @@ const Player = {
 
     this.playlistUL.onclick = (e) => this.changeSongOnClick(e);
     this.shuffleBTN.onclick = () => this.onShuffle();
+    this.toggleLyricsBTN.onclick = () => this.toggleLyrics();
 
     this.handleSeekbar();
     this.showCurrentSong();
@@ -234,6 +258,7 @@ const Player = {
     this.createAudio(this.data[this.currentPlaying].src);
     this.initPlayList();
     this.updatePlayer();
+
     this.onAudioLoadedData(() => this.activeActions());
   },
 };
