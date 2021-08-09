@@ -47,9 +47,7 @@ const Player = {
     </li>
   `;
 
-    const li = this.data.map(createTemplateLI).join("");
-
-    this.playlistUL.innerHTML = li;
+    this.playlistUL.innerHTML = this.data.map(createTemplateLI).join("");
   },
 
   updatePlayer() {
@@ -104,10 +102,9 @@ const Player = {
     if (this.currentPlaying === 0) {
       return;
     }
+
     this.reset();
-
     this.currentPlaying--;
-
     this.start();
     this.play();
     this.togglePlayPauseIcons();
@@ -147,8 +144,6 @@ const Player = {
     if (this.isShuffling && !this.isPlaying) {
       this.currentPlaying = Math.floor(Math.random() * this.data.length);
 
-      console.log(this.currentPlaying, "onshuffle");
-
       this.start();
       this.play();
       this.togglePlayPauseIcons();
@@ -176,6 +171,14 @@ const Player = {
 
     this.seekbarEl.style.backgroundSize =
       ((value - min) * 100) / (max - min) + "% 100%";
+  },
+
+  handleSeekbar() {
+    this.seekbarEl.max = this.audio.duration;
+    this.seekbarEl.oninput = () => {
+      this.setSeekbar(this.seekbarEl.value);
+      this.changeSeekbarStyle();
+    };
   },
 
   changeSongOnClick(event) {
@@ -212,20 +215,15 @@ const Player = {
 
     this.audio.ontimeupdate = () => this.updateTime();
 
-    this.seekbarEl.max = this.audio.duration;
-    this.seekbarEl.oninput = () => {
-      this.setSeekbar(this.seekbarEl.value);
-      this.changeSeekbarStyle();
-    };
+    this.playlistUL.onclick = (e) => this.changeSongOnClick(e);
+    this.shuffleBTN.onclick = () => this.onShuffle();
+
+    this.handleSeekbar();
+    this.showCurrentSong();
 
     this.totalDurationEl.innerText = convertSecondsToMinutes(
       this.audio.duration
     );
-
-    this.showCurrentSong();
-
-    this.playlistUL.onclick = (e) => this.changeSongOnClick(e);
-    this.shuffleBTN.onclick = () => this.onShuffle();
   },
 
   onAudioLoadedData(callback) {
