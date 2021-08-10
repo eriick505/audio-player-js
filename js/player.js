@@ -179,6 +179,10 @@ const Player = {
       ((value - min) * 100) / (max - min) + "% 100%";
   },
 
+  onAudioEnded() {
+    this.next();
+  },
+
   handleSeekbar() {
     this.seekbarEl.max = this.audio.duration;
     this.seekbarEl.oninput = () => {
@@ -237,6 +241,7 @@ const Player = {
     this.nextBTN.onclick = () => this.next();
 
     this.audio.ontimeupdate = () => this.updateTime();
+    this.audio.onended = () => this.onAudioEnded();
 
     this.playlistUL.onclick = (e) => this.changeSongOnClick(e);
     this.shuffleBTN.onclick = () => this.onShuffle();
