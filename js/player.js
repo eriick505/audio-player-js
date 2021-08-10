@@ -8,6 +8,7 @@ const Player = {
   togglePlaySPAN: document.querySelectorAll(".togglePlay span"),
   shuffleBTN: document.querySelector("#shuffle"),
   toggleLyricsBTN: document.querySelector("#openLyrics"),
+  repeatBTN: document.querySelector("#repeat"),
 
   titleEl: document.querySelector("#title"),
   bandEl: document.querySelector("#band"),
@@ -25,6 +26,7 @@ const Player = {
 
   isPlaying: false,
   isShuffling: false,
+  isLooping: false,
   lyric: null,
 
   data: mockPlaylist,
@@ -156,6 +158,18 @@ const Player = {
     }
   },
 
+  setLooping() {
+    this.isLooping = !this.isLooping;
+
+    if (this.isLooping) {
+      this.audio.setAttribute("loop", "");
+    } else {
+      this.audio.removeAttribute("loop");
+    }
+
+    this.repeatBTN.classList.toggle("active");
+  },
+
   updateTime() {
     this.changeSeekbarStyle();
 
@@ -245,6 +259,7 @@ const Player = {
 
     this.playlistUL.onclick = (e) => this.changeSongOnClick(e);
     this.shuffleBTN.onclick = () => this.onShuffle();
+    this.repeatBTN.onclick = () => this.setLooping();
     this.toggleLyricsBTN.onclick = () => this.toggleLyrics();
 
     this.handleSeekbar();
