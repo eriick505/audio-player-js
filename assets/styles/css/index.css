@@ -412,6 +412,11 @@ img {
   height: 50px;
 }
 
+.wrapper_player .player .controls .wrapper_buttons #repeat.active {
+  color: var(--white);
+  background-color: var(--secondary);
+}
+
 .wrapper_player .player .controls .buttons {
   display: flex;
   align-items: center;
