@@ -6,7 +6,7 @@ const Player = {
   playlistUL: document.querySelector(".playlist"),
   togglePlayBTN: document.querySelectorAll(".togglePlay"),
   togglePlaySPAN: document.querySelectorAll(".togglePlay span"),
-  shuffleBTN: document.querySelector("#shuffle"),
+  shuffleBTN: document.querySelectorAll(".btnShuffle"),
   toggleLyricsBTN: document.querySelector("#openLyrics"),
   repeatBTN: document.querySelector("#repeat"),
 
@@ -143,11 +143,11 @@ const Player = {
 
   setShuffle() {
     this.isShuffling = !this.isShuffling;
-    this.shuffleBTN.classList.toggle("active");
   },
 
   onShuffle() {
     this.setShuffle();
+    this.shuffleBTN.forEach((btn) => btn.classList.toggle("active"));
 
     if (this.isShuffling && !this.isPlaying) {
       this.currentPlaying = Math.floor(Math.random() * this.data.length);
@@ -156,6 +156,14 @@ const Player = {
       this.play();
       this.togglePlayPauseIcons();
     }
+  },
+
+  handleShuffleButtons() {
+    const addEventOnClick = (btn) => {
+      btn.onclick = () => this.onShuffle();
+    };
+
+    this.shuffleBTN.forEach(addEventOnClick);
   },
 
   setLooping() {
@@ -257,8 +265,9 @@ const Player = {
     this.audio.ontimeupdate = () => this.updateTime();
     this.audio.onended = () => this.onAudioEnded();
 
+    this.handleShuffleButtons();
+
     this.playlistUL.onclick = (e) => this.changeSongOnClick(e);
-    this.shuffleBTN.onclick = () => this.onShuffle();
     this.repeatBTN.onclick = () => this.setLooping();
     this.toggleLyricsBTN.onclick = () => this.toggleLyrics();
 
