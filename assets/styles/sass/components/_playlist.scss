@@ -32,7 +32,7 @@
 
     .info {
       opacity: 0.9;
-
+      transition: var(--transition2s);
       pointer-events: none;
 
       h5 {
@@ -61,6 +61,21 @@
 
       button {
         display: flex;
+      }
+    }
+
+    &:hover {
+      background-color: var(--primary-light);
+
+      .info {
+        transform: translateX(0.8rem);
+      }
+
+      & .order,
+      & .info h5,
+      & .info span,
+      & .menu button {
+        color: var(--white);
       }
     }
 

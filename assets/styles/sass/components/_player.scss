@@ -50,6 +50,11 @@
         height: 50px;
       }
 
+      #openLyrics.active {
+        color: var(--white);
+        background-color: var(--secondary);
+      }
+
       .reproducing {
         text-align: center;
 
@@ -155,6 +160,8 @@
           height: 3px;
           border-radius: 5px;
 
+          cursor: pointer;
+
           background: rgba(255, 255, 255, 0.6);
           background-image: linear-gradient(var(--secondary), var(--secondary));
           background-size: 0% 100%;
@@ -221,7 +228,8 @@
           color: var(--white);
           background-color: var(--secondary-dark);
 
-          &:active {
+          &:active,
+          &.active {
             box-shadow: 2px 2px 7px 1px rgba(0, 0, 0, 0.55);
 
             background-color: var(--secondary);

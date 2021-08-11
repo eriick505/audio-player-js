@@ -182,6 +182,7 @@ img {
 
 .playlist .song .info {
   opacity: 0.9;
+  transition: var(--transition2s);
   pointer-events: none;
 }
 
@@ -207,6 +208,21 @@ img {
 
 .playlist .song .menu button {
   display: flex;
+}
+
+.playlist .song:hover {
+  background-color: var(--primary-light);
+}
+
+.playlist .song:hover .info {
+  transform: translateX(0.8rem);
+}
+
+.playlist .song:hover .order,
+.playlist .song:hover .info h5,
+.playlist .song:hover .info span,
+.playlist .song:hover .menu button {
+  color: var(--white);
 }
 
 .playlist .song.active, .playlist .song:active {
@@ -281,6 +297,11 @@ img {
 
 .wrapper_player .player header button {
   height: 50px;
+}
+
+.wrapper_player .player header #openLyrics.active {
+  color: var(--white);
+  background-color: var(--secondary);
 }
 
 .wrapper_player .player header .reproducing {
@@ -374,6 +395,7 @@ img {
   width: 100%;
   height: 3px;
   border-radius: 5px;
+  cursor: pointer;
   background: rgba(255, 255, 255, 0.6);
   background-image: linear-gradient(var(--secondary), var(--secondary));
   background-size: 0% 100%;
@@ -434,7 +456,7 @@ img {
   background-color: var(--secondary-dark);
 }
 
-.wrapper_player .player .controls .buttons #togglePlay:active {
+.wrapper_player .player .controls .buttons #togglePlay:active, .wrapper_player .player .controls .buttons #togglePlay.active {
   box-shadow: 2px 2px 7px 1px rgba(0, 0, 0, 0.55);
   background-color: var(--secondary);
 }
@@ -543,6 +565,6 @@ img {
   color: var(--white);
 }
 
-.player_bottom .togglePlay:active {
+.player_bottom .togglePlay:active, .player_bottom .togglePlay.active {
   background-color: var(--secondary);
 }

@@ -100,6 +100,7 @@ const Player = {
       this.play();
     }
 
+    this.togglePlayBTN.forEach((btn) => btn.classList.toggle("active"));
     this.togglePlayPauseIcons();
   },
 
@@ -270,6 +271,7 @@ const Player = {
 
   toggleLyrics() {
     this.lyricsEl.classList.toggle("active");
+    this.toggleLyricsBTN.classList.toggle("active");
   },
 
   activeActions() {
