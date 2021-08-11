@@ -3,6 +3,10 @@ import fetchLyric from "./fetchLyric.js";
 import { convertSecondsToMinutes } from "./utils.js";
 
 const Player = {
+  playerWrapperEl: document.querySelector(".wrapper_player"),
+  playerBottomEl: document.querySelector(".player_bottom"),
+  playerCloseBTN: document.querySelector(".close"),
+
   playlistUL: document.querySelector(".playlist"),
   togglePlayBTN: document.querySelectorAll(".togglePlay"),
   togglePlaySPAN: document.querySelectorAll(".togglePlay span"),
@@ -56,7 +60,7 @@ const Player = {
     this.playlistUL.innerHTML = this.data.map(createTemplateLI).join("");
   },
 
-  async updatePlayer() {
+  updatePlayer() {
     const { title, band } = this.data[this.currentPlaying];
 
     this.titleEl.textContent = title;
@@ -65,6 +69,18 @@ const Player = {
     this.bandBottomEl.textContent = band;
 
     this.getLyric();
+  },
+
+  showPlayer(e) {
+    const tagName = e.target.tagName;
+
+    if (tagName !== "BUTTON") {
+      this.playerWrapperEl.classList.add("active");
+    }
+  },
+
+  hidePlayer() {
+    this.playerWrapperEl.classList.remove("active");
   },
 
   play() {
@@ -258,6 +274,9 @@ const Player = {
 
   activeActions() {
     this.handlePlayPauseButtons();
+
+    this.playerBottomEl.onclick = (e) => this.showPlayer(e);
+    this.playerCloseBTN.onclick = () => this.hidePlayer();
 
     this.prevBTN.onclick = () => this.prev();
     this.nextBTN.onclick = () => this.next();
