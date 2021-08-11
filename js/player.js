@@ -100,19 +100,25 @@ const Player = {
       this.play();
     }
 
-    this.togglePlayBTN.forEach((btn) => btn.classList.toggle("active"));
+    this.togglePlayPauseStyle();
+  },
+
+  togglePlayPauseStyle() {
+    this.togglePlayBTN.forEach((btn) => {
+      if (this.isPlaying) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+
     this.togglePlayPauseIcons();
   },
 
   togglePlayPauseIcons() {
-    const changeIconToPlayArrow = (span) => (span.innerText = "play_arrow");
-    const changeIconToPause = (span) => (span.innerText = "pause");
+    const icon = this.isPlaying ? "pause" : "play_arrow";
 
-    if (!this.isPlaying) {
-      this.togglePlaySPAN.forEach(changeIconToPlayArrow);
-    } else {
-      this.togglePlaySPAN.forEach(changeIconToPause);
-    }
+    this.togglePlaySPAN.forEach((span) => (span.innerHTML = icon));
   },
 
   handlePlayPauseButtons() {
@@ -132,7 +138,7 @@ const Player = {
     this.currentPlaying--;
     this.start();
     this.play();
-    this.togglePlayPauseIcons();
+    this.togglePlayPauseStyle();
   },
 
   next() {
@@ -150,7 +156,7 @@ const Player = {
 
     this.start();
     this.play();
-    this.togglePlayPauseIcons();
+    this.togglePlayPauseStyle();
   },
 
   reset() {
@@ -171,7 +177,7 @@ const Player = {
 
       this.start();
       this.play();
-      this.togglePlayPauseIcons();
+      this.togglePlayPauseStyle();
     }
   },
 
@@ -246,7 +252,7 @@ const Player = {
 
     this.onAudioLoadedData(() => {
       this.play();
-      this.togglePlayPauseIcons();
+      this.togglePlayPauseStyle();
     });
   },
 
