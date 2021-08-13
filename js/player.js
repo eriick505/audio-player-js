@@ -12,6 +12,7 @@ const Player = {
   togglePlaySPAN: document.querySelectorAll(".togglePlay span"),
   shuffleBTN: document.querySelectorAll(".btnShuffle"),
   toggleLyricsBTN: document.querySelector("#openLyrics"),
+  toggleVolumeBTN: document.querySelector("#openVolume"),
   repeatBTN: document.querySelector("#repeat"),
 
   titleEl: document.querySelector("#title"),
@@ -19,6 +20,12 @@ const Player = {
   titleBottomEl: document.querySelector("#titleBottom"),
   bandBottomEl: document.querySelector("#bandBottom"),
   lyricsEl: document.querySelector(".lyrics"),
+
+  volumeUpBTN: document.querySelector("#volumeUp"),
+  toggleMuteBTN: document.querySelector("#toggleMute"),
+  toggleMuteSPAN: document.querySelector("#toggleMute span"),
+  volumeDownBTN: document.querySelector("#volumeDown"),
+  volumeMenuEl: document.querySelector(".volume_menu"),
 
   currentDurationEl: document.querySelector(".initial_duration"),
   seekbarEl: document.querySelector("#seekbar"),
@@ -31,10 +38,12 @@ const Player = {
   isPlaying: false,
   isShuffling: false,
   isLooping: false,
+  isMute: false,
   lyric: null,
+  currentVolume: 70,
+  currentPlaying: 0,
 
   data: mockPlaylist,
-  currentPlaying: 0,
 
   createAudio(src) {
     this.audio = new Audio(src);
@@ -280,7 +289,54 @@ const Player = {
     this.toggleLyricsBTN.classList.toggle("active");
   },
 
+  toggleVolumeMenu() {
+    this.volumeMenuEl.classList.toggle("active");
+  },
+
+  setVolume(vol) {
+    this.audio.volume = vol / 100;
+  },
+
+  volumeUp() {
+    if (this.currentVolume >= 100) return;
+
+    this.currentVolume = this.currentVolume + 5;
+
+    this.setVolume(this.currentVolume);
+    this.changeVolumeIcon();
+  },
+
+  volumeDown() {
+    this.changeVolumeIcon();
+
+    if (this.currentVolume <= 0) {
+      return;
+    }
+
+    this.currentVolume = this.currentVolume - 5;
+    this.setVolume(this.currentVolume);
+  },
+
+  toggleMuted() {
+    this.audio.muted = !this.isMute;
+    this.isMute = !this.isMute;
+
+    this.changeVolumeIcon();
+  },
+
+  changeVolumeIcon() {
+    if (this.isMute || this.currentVolume === 0) {
+      this.toggleMuteSPAN.innerText = "volume_off";
+    } else if (this.currentVolume < 60) {
+      this.toggleMuteSPAN.innerText = "volume_down";
+    } else {
+      this.toggleMuteSPAN.innerText = "volume_up";
+    }
+  },
+
   activeActions() {
+    this.audio.volume = this.currentVolume / 100;
+
     this.handlePlayPauseButtons();
 
     this.playerBottomEl.onclick = (e) => this.showPlayer(e);
@@ -297,6 +353,11 @@ const Player = {
     this.playlistUL.onclick = (e) => this.changeSongOnClick(e);
     this.repeatBTN.onclick = () => this.setLooping();
     this.toggleLyricsBTN.onclick = () => this.toggleLyrics();
+
+    this.toggleVolumeBTN.onclick = () => this.toggleVolumeMenu();
+    this.volumeUpBTN.onclick = () => this.volumeUp();
+    this.volumeDownBTN.onclick = () => this.volumeDown();
+    this.toggleMuteBTN.onclick = () => this.toggleMuted();
 
     this.handleSeekbar();
     this.showCurrentSong();
