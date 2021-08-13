@@ -489,6 +489,48 @@ img {
   margin: 0 auto 1rem;
 }
 
+.wrapper_player .player .volume_menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 7rem;
+  right: 1rem;
+  padding: 5px;
+  border-radius: 20px;
+  transform: translateX(2rem);
+  transition: var(--transition2s);
+  pointer-events: none;
+  box-shadow: 3px 3px 7px 1px rgba(0, 0, 0, 0.34);
+  z-index: 500;
+  opacity: 0;
+  background-color: var(--white);
+}
+
+.wrapper_player .player .volume_menu.active {
+  opacity: 1;
+  transform: initial;
+  pointer-events: initial;
+}
+
+.wrapper_player .player .volume_menu li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.wrapper_player .player .volume_menu button {
+  width: 30px;
+  height: 30px;
+  color: var(--primary);
+}
+
+.wrapper_player .player .volume_menu button span {
+  font-size: 2rem;
+}
+
+.wrapper_player .player .volume_menu button:hover {
+  color: var(--white);
+  background-color: var(--primary);
+}
+
 .album_cover {
   height: 42vh;
   width: 100%;
