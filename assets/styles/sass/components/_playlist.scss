@@ -6,6 +6,10 @@
 
   background-color: var(--white);
 
+  @media (max-width: 800px) {
+    height: 325px;
+  }
+
   .song {
     display: grid;
     grid-template-columns: 80px 1fr 80px;
