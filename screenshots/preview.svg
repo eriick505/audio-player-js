@@ -1,0 +1,37 @@
+<svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+	<foreignObject width="100%" height="100%">
+		<div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .preview {
+          display: flex;
+          gap: 15px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .preview li {
+          display: block;
+          width: 300px;
+          flex: 0 0 31%;
+        }
+
+        .preview li img {
+          max-width: 100%;
+        }
+
+        @media(max-width: 800px) {
+          .preview li {
+            flex: 0 0 100%;
+          }
+        }
+      </style>
+      <ul class="preview">
+        <li><img alt="Select and play song" src="./select-and-play.gif" /></li>
+        <li><img alt="Listing and open song" src="./listin-and-open.gif" /></li>
+        <li><img alt="Open lyric song" src="./open-lyrics.gif" /></li>
+        <li><img alt="Shuffling and repeatable song" src="./shuffling-and-repeatable.gif" /></li>
+        <li><img alt="Change volume song" src="./change-volume.gif" /></li>
+      </ul>
+    </div>
+	</foreignObject>
+</svg>
