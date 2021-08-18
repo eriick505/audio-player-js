@@ -341,8 +341,8 @@ const Player = {
 
     this.handlePlayPauseButtons();
 
-    this.openPlayer.onclick = (e) => this.showPlayer(e);
     this.playerBottomEl.onclick = (e) => this.showPlayer(e);
+    this.openPlayerBTN.onclick = (e) => this.showPlayer(e);
     this.playerCloseBTN.onclick = () => this.hidePlayer();
 
     this.prevBTN.onclick = () => this.prev();
