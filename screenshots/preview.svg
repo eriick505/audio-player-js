@@ -31,11 +31,10 @@
         }
 			</style>
 			<ul class="preview">
-        <li>TESTE 1<img alt="Select and play song" src="https://raw.githubusercontent.com/eriick505/audio-player-js/main/screenshots/change-volume.gif" /></li>
-        <li>TESTE 1<img alt="Listing and open song" src="listin-and-open.gif" /></li>
-        <li>TESTE 1<img alt="Open lyric song" src="open-lyrics.gif" /></li>
-        <li>TESTE 1<img alt="Shuffling and repeatable song" src="shuffling-and-repeatable.gif" /></li>
-        <li>TESTE 1<img alt="Change volume song" src="change-volume.gif" /></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
       </ul>
 		</div>
 	</foreignObject>
