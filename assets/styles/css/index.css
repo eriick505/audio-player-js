@@ -548,6 +548,31 @@ img {
   background-repeat: no-repeat;
 }
 
+.album_cover button {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  margin: 1rem auto auto 1rem;
+  transform: rotate(180deg);
+  z-index: 500;
+  box-shadow: 3px 3px 7px 1px rgba(0, 0, 0, 0.25);
+  color: var(--white);
+  background-color: var(--secondary);
+}
+
+.album_cover button:hover {
+  transform: initial;
+  background-color: var(--white);
+}
+
+.album_cover button:hover span {
+  color: var(--primary);
+}
+
+.album_cover button span {
+  font-size: 2.5rem;
+}
+
 .album_cover .overlay {
   display: block;
   width: 100%;
