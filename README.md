@@ -1,4 +1,4 @@
-<h1 align="center">Player JS</h1>
+<h1 align="center">Áudio Player JS</h1>
 
 <p align="center">
  <a href="#objetivo">Objetivo</a> •
