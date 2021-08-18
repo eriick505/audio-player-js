@@ -16,7 +16,13 @@
 <h3 id="preview">🖥️ Preview do projeto</h3>
 <hr />
 
-<img alt="project preview" src="./screenshots/preview.svg" />
+<div style="display: flex;">
+  <span><img alt="Select and play song" src="./screenshots/select-and-play.gif" /></span>
+  <span><img alt="Open lyric song" src="./screenshots/open-lyrics.gif" /></span>
+  <span><img alt="Listing and open song" src="./screenshots/listin-and-open.gif" /></span>
+  <span><img alt="Shuffling and repeatable song" src="./screenshots/shuffling-and-repeatable.gif" /></span>
+  <span><img alt="Change volume song" src="./screenshots/change-volume.gif" /></span>
+</div>
 
 <h3 id="funcionalidades">✅ Funcionalidades</h3>
 <hr />
