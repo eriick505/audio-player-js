@@ -26,11 +26,11 @@
         }
       </style>
       <ul class="preview">
-        <li><img alt="Select and play song" src="./select-and-play.gif" /></li>
-        <li><img alt="Listing and open song" src="./listin-and-open.gif" /></li>
-        <li><img alt="Open lyric song" src="./open-lyrics.gif" /></li>
-        <li><img alt="Shuffling and repeatable song" src="./shuffling-and-repeatable.gif" /></li>
-        <li><img alt="Change volume song" src="./change-volume.gif" /></li>
+        <li><img alt="Select and play song" src="select-and-play.gif" /></li>
+        <li><img alt="Listing and open song" src="listin-and-open.gif" /></li>
+        <li><img alt="Open lyric song" src="open-lyrics.gif" /></li>
+        <li><img alt="Shuffling and repeatable song" src="shuffling-and-repeatable.gif" /></li>
+        <li><img alt="Change volume song" src="change-volume.gif" /></li>
       </ul>
     </div>
 	</foreignObject>
