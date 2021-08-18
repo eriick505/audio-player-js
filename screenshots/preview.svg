@@ -1,8 +1,8 @@
 <svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg">
 	<foreignObject width="100%" height="100%">
 		<div xmlns="http://www.w3.org/1999/xhtml">
-      <style>
-        .preview {
+			<style>
+				.preview {
           display: flex;
           gap: 15px;
           justify-content: center;
@@ -10,9 +10,12 @@
         }
 
         .preview li {
-          display: block;
-          width: 300px;
           flex: 0 0 31%;
+
+          display: block;
+          background-color: #fb5;
+          height: 400px;
+          width: 300px;
         }
 
         .preview li img {
@@ -24,14 +27,14 @@
             flex: 0 0 100%;
           }
         }
-      </style>
-      <ul class="preview">
+			</style>
+			<ul class="preview">
         <li>TESTE 1<img alt="Select and play song" src="https://raw.githubusercontent.com/eriick505/audio-player-js/main/screenshots/change-volume.gif" /></li>
         <li>TESTE 1<img alt="Listing and open song" src="listin-and-open.gif" /></li>
         <li>TESTE 1<img alt="Open lyric song" src="open-lyrics.gif" /></li>
         <li>TESTE 1<img alt="Shuffling and repeatable song" src="shuffling-and-repeatable.gif" /></li>
         <li>TESTE 1<img alt="Change volume song" src="change-volume.gif" /></li>
       </ul>
-    </div>
+		</div>
 	</foreignObject>
 </svg>
