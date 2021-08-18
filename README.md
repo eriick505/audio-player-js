@@ -18,8 +18,8 @@
 
 <div style="display: flex;">
   <span><img alt="Select and play song" src="./screenshots/change-volume.gif" /></span>
-  <span><img alt="Listing and open song" src="./screenshots/listin-and-open.gif" /></span>
   <span><img alt="Open lyric song" src="./screenshots/open-lyrics.gif" /></span>
+  <span><img alt="Listing and open song" src="./screenshots/listin-and-open.gif" /></span>
   <span><img alt="Shuffling and repeatable song" src="./screenshots/shuffling-and-repeatable.gif" /></span>
   <span><img alt="Change volume song" src="./screenshots/change-volume.gif" /></span>
 </div>
