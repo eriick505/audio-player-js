@@ -5,6 +5,7 @@ import { convertSecondsToMinutes } from "./utils.js";
 const Player = {
   playerWrapperEl: document.querySelector(".wrapper_player"),
   playerBottomEl: document.querySelector(".player_bottom"),
+  openPlayerBTN: document.querySelector(".openPlayer"),
   playerCloseBTN: document.querySelector(".close"),
 
   playlistUL: document.querySelector(".playlist"),
@@ -82,8 +83,9 @@ const Player = {
 
   showPlayer(e) {
     const tagName = e.target.tagName;
+    const hasClass = e.target.classList.contains("openPlayer");
 
-    if (tagName !== "BUTTON") {
+    if (tagName !== "BUTTON" || hasClass) {
       this.playerWrapperEl.classList.add("active");
     }
   },
@@ -339,6 +341,7 @@ const Player = {
 
     this.handlePlayPauseButtons();
 
+    this.openPlayer.onclick = (e) => this.showPlayer(e);
     this.playerBottomEl.onclick = (e) => this.showPlayer(e);
     this.playerCloseBTN.onclick = () => this.hidePlayer();
 
